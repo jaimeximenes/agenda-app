@@ -10,9 +10,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@Entity(name = "tb_tipousuario")
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity(name = "tb_tipousuario")
 
 public class TipoUsuario {
     @Id

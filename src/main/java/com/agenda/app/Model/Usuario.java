@@ -25,13 +25,13 @@ public class Usuario {
     private String nome;
     @Column(name = "sobrenome", nullable = false, length = 45)
     private String sobrenome;
-    @Column(name = "email", nullable = false, length = 45)
+    @Column(name = "email", unique = true, nullable = false, length = 45)
     private String email;
     @Column(name = "senha", nullable = false, length = 45)
     private String senha;
 
     @OneToOne
-    @JoinColumn(name = "id_tipo_usuario")
+    @JoinColumn(name = "idTipoUsuario")
     private TipoUsuario tipoUsuario;
 
 }

@@ -14,7 +14,7 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
 
     Usuario findById(int id);
 
-    @Query("SELECT u FROM tb_usuario u WHERE u.TipoUsuario.idTipoUsuario = :idTipoUsuario")
+    @Query("SELECT u FROM tb_usuario u WHERE u.tipoUsuario.idTipoUsuario = :idTipoUsuario")
     List<Usuario> findByTipoUsuario(@Param("idTipoUsuario") int idTipoUsuario);
 
 }

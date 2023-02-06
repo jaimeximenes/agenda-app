@@ -23,6 +23,6 @@ public class Servico {
     private String descricao;
 
     @OneToOne
-    @JoinColumn(name="idUsuario")
-    private Usuario usuario;
+    @JoinColumn(name="idPrestador")
+    private Usuario prestador;
 }
