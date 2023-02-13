@@ -24,8 +24,8 @@ public class Agendamento {
     private LocalTime hora;
 
     @OneToOne
-    @JoinColumn(name="idUsuario")
-    private Usuario usuario;
+    @JoinColumn(name="idCliente")
+    private Usuario cliente;
 
     @OneToOne
     @JoinColumn(name="idServico")

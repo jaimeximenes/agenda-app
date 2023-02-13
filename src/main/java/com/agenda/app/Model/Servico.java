@@ -14,7 +14,7 @@ import lombok.Data;
 public class Servico {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idServiço;
+    private int idServico;
 
     @Column(name = "nome", nullable = false, length = 45)
     private String nome;
@@ -23,6 +23,6 @@ public class Servico {
     private String descricao;
 
     @OneToOne
-    @JoinColumn(name="idPrestador")
+    @JoinColumn(name="idPrestador",nullable = true)
     private Usuario prestador;
 }

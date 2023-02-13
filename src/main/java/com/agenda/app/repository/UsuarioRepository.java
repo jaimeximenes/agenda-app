@@ -1,6 +1,7 @@
 package com.agenda.app.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -15,6 +16,8 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
     Usuario findById(int id);
 
     @Query("SELECT u FROM tb_usuario u WHERE u.tipoUsuario.idTipoUsuario = :idTipoUsuario")
-    List<Usuario> findByTipoUsuario(@Param("idTipoUsuario") int idTipoUsuario);
+    List<Usuario> findByTipoUsuario(@Param("idTipoUsuario") int id);
 
+    @Query("SELECT u FROM tb_usuario u WHERE u.email = :email")
+    Optional<Usuario> findByEmail(@Param("email") String email);
 }
