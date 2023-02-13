@@ -26,7 +26,7 @@ public class ServicoController {
     public ResponseEntity<Object> criarNovoServico(@RequestBody Servico servico) {
         try {
             return ResponseEntity.status(HttpStatus.CREATED)
-                    .body(servicoRespository.save(servico));
+                    .body(servicoRepository.save(servico));
 
         } catch (DataIntegrityViolationException d) {
             return ResponseEntity.status(HttpStatus.CONFLICT)
@@ -39,25 +39,30 @@ public class ServicoController {
 
     @GetMapping
     public List<Servico> obterServicos() {
-        return servicoRespository.findAll();
+        return servicoRepository.findAll();
     }
 
     @GetMapping(value = "/{id}")
     public Optional<Servico> obterServicoById(@PathVariable("id") int id) {
-        return servicoRespository.findById(id);
+        return servicoRepository.findById(id);
     }
 
     @DeleteMapping(value = "/{id}")
     public String deleteServicoById(@PathVariable("id") int id) {
-        servicoRespository.deleteById(id);
+        servicoRepository.deleteById(id);
         return "Servico deletado com sucesso";
     }
 
     @PutMapping
     public ResponseEntity<Servico> atualizaServicoById(@RequestBody Servico servico) {
-        return ResponseEntity.status(HttpStatus.OK).body(servicoRespository.save(servico));
+        return ResponseEntity.status(HttpStatus.OK).body(servicoRepository.save(servico));
+    }
+
+    @GetMapping(value = "/prestador/{id}")
+    public ResponseEntity<List<Servico>> obterServicosDoPrestador(@PathVariable("id") int id) {
+        return ResponseEntity.status(HttpStatus.OK).body(servicoRepository.findByPrestador(id));
     }
 
     @Autowired
-    private ServicoRepository servicoRespository;
+    private ServicoRepository servicoRepository;
 }

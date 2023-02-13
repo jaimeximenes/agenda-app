@@ -9,7 +9,6 @@ import org.springframework.data.repository.query.Param;
 import com.agenda.app.Model.Servico;
 
 public interface ServicoRepository extends JpaRepository<Servico, Integer> {
-
     @Query("SELECT s FROM tb_servico s WHERE s.prestador.idUsuario = :idPrestador")
     List<Servico> findByPrestador(@Param("idPrestador") int id);
 }
